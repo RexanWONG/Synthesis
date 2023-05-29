@@ -10,7 +10,6 @@ config({ path: `${__dirname}/../.env` });
 const API_KEY = process.env.OPENAI_API_KEY
 
 async function createCompletion() {
-    console.log(API_KEY)
   try {
     const APIBody = {
       model: 'text-davinci-003',
