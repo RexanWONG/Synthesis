@@ -31,7 +31,6 @@ export async function createCompletion(prompt) {
     })
 
     const data = await response.json();
-    console.log(data)
 
     return data
 
