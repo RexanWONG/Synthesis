@@ -35,10 +35,7 @@ export async function createCompletion(prompt, maxTokens) {
 
     return data
 
-
   } catch (error) {
     console.error(error)
   }
 }
-
-createCompletion();
