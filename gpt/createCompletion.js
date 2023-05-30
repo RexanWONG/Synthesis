@@ -9,15 +9,15 @@ config({ path: `${__dirname}/../.env` });
 
 const API_KEY = process.env.OPENAI_API_KEY
 
-export async function createCompletion(prompt, maxTokens) {
+export async function createCompletion(prompt) {
   try {
     const APIBody = {
-      model: 'text-davinci-003',
-      prompt: prompt,
-      max_tokens: maxTokens,
-      temperature: 1,
-      frequency_penalty: 1,
-      presence_penalty: 1,
+      'model': 'text-davinci-003',
+      'prompt': prompt,
+      'max_tokens': 400,
+      'temperature': 0.6,
+      'frequency_penalty': 0.0,
+      'presence_penalty': 0.0,
     }
 
     const response = await fetch("https://api.openai.com/v1/completions", {
