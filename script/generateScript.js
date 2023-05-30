@@ -1,3 +1,4 @@
+import { writeFile } from 'fs/promises';
 import { createCompletion } from "../gpt/createCompletion.js";
 import { sustainabilityTopics } from "../constants/listOfTopics.js";
 
@@ -7,8 +8,16 @@ function getRandomTopic() {
 }
 
 async function generateScript(prompt) {
-    const script = await createCompletion(prompt)
-    console.log(script)
+    try {
+        const script = await createCompletion(prompt)
+        console.log(script)
+    
+        await writeFile(`../assets/script.txt`, script);
+        console.log(`Saved script to script.txt`);
+
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 generateScript(
