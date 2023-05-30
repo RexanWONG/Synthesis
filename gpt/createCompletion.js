@@ -9,14 +9,12 @@ config({ path: `${__dirname}/../.env` });
 
 const API_KEY = process.env.OPENAI_API_KEY
 
-async function createCompletion() {
+export async function createCompletion(prompt, maxTokens) {
   try {
     const APIBody = {
       model: 'text-davinci-003',
-      prompt: `You are my Youtube assistant.  
-      Please write a script for a Youtube video about pollution.  T
-      he video will be around 2-3 minutes.`,
-      max_tokens: 200,
+      prompt: prompt,
+      max_tokens: maxTokens,
       temperature: 1,
       frequency_penalty: 1,
       presence_penalty: 1,
@@ -34,6 +32,8 @@ async function createCompletion() {
 
     const data = await response.json();
     console.log(data)
+
+    return data
 
 
   } catch (error) {
