@@ -1,23 +1,25 @@
 import { createCompletion } from "../gpt/createCompletion.js";
 
 export async function findKeywords(script) {
+  let keywordArray = []; 
   try {
     const importantKeywords = await createCompletion(`
-      I will give you a script. Please return important words/keywords, logos, etc.
-      These words will be represented as images in the future. Here is the script:
-      ${script}
+      I will give you a script. For each sentence, choose a keyword to represent that sentence.
+      The keyword will be used to search for a picture on unsplash.  Seperate each keyword with a comma.  
+      Here is the script:
+      ${script}`);
 
-      Please list the top 10 most important keywords:
-      `);
+    let keywords = (importantKeywords.choices[0].text).split(',');
 
-    // Extract the 10 most frequent words
-    const words = importantKeywords.choices[0].text.split('\n').slice(1, -1);
-    const top10Words = words.slice(0, 10);
-
-    return top10Words;
+    for (let i = 0; i < keywords.length; i++) {
+      keywordArray.push(keywords[i].trim()); // push each keyword into our array
+    }
 
   } catch (error) {
     console.error(error);
     return [];
   }
+
+  return keywordArray; 
 }
+
