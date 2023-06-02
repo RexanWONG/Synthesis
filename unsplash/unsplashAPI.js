@@ -8,7 +8,7 @@ export class Unsplash {
     this.unsplash = createApi({ accessKey, fetch });
   }
 
-  async getPhoto(type, query, imageNumber, page = 1, per_page = 8, orientation = 'landscape') {
+  async getPhoto(type, query, imageNumber, page = 1, per_page = 8, orientation = 'landscape', retryCount = 0) {
     try {
       // Send a request to the Unsplash API to search for photos
       const response  = await this.unsplash.search.getPhotos({
@@ -43,8 +43,18 @@ export class Unsplash {
       // Check the value of the "type" parameter and execute the corresponding code block
       switch (type) {
         case 'buffer':
-          // Existing code...
-          break;
+          // Convert the photo buffer to Uint8Array
+          const data = new Uint8Array(photoBuffer);
+          console.log(`Image ${imageNumber}.jpg buffer ready`);
+          // Return an object containing the photo's buffer and attributes
+          return {
+            attributes: {
+              caption: caption,
+              title: query.toLowerCase(),
+              alt_text: `an image of ${query.toLowerCase()}`,
+            },
+            buffer: data
+          };
         case 'file':
           // Convert the photo buffer to a Buffer
           const image = Buffer.from(photoBuffer);
@@ -65,8 +75,16 @@ export class Unsplash {
           return null;
       }
     } catch (error) {
-      console.log(error);
-      return null;
+      console.log(`Error occurred while fetching image for ${query}: ${error}`);
+
+      // Retry if error occurs, maximum of 3 attempts
+      if (retryCount < 3) {
+        console.log(`Retrying fetch for ${query}. Attempt ${retryCount + 1}`);
+        return this.getPhoto(type, query, imageNumber, page, per_page, orientation, retryCount + 1);
+      } else {
+        console.log(`Failed to fetch image for ${query} after ${retryCount} attempts.`);
+        return null;
+      }
     }
   }
 }
