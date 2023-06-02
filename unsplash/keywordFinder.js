@@ -5,7 +5,8 @@ export async function findKeywords(script) {
   try {
     const importantKeywords = await createCompletion(`
       I will give you a script. For each sentence, choose a keyword to represent that sentence.
-      The keyword will be used to search for a picture on unsplash.  Seperate each keyword with a comma.  
+      The keyword will be used to search for a picture on unsplash.  Seperate each keyword with a comma. 
+      Just write the name of each keyword. 
       Here is the script:
       ${script}`);
 

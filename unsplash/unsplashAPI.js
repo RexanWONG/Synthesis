@@ -2,14 +2,13 @@ import { createApi } from 'unsplash-js';
 import fetch from 'node-fetch';
 import fs from 'fs';
 
-
 export class Unsplash {
   constructor(accessKey) {
     // Create an instance of the Unsplash API using the provided access key
     this.unsplash = createApi({ accessKey, fetch });
   }
 
-  async getPhoto(type, query, page = 1, per_page = 8, orientation = 'landscape' ) {
+  async getPhoto(type, query, imageNumber, page = 1, per_page = 8, orientation = 'landscape') {
     try {
       // Send a request to the Unsplash API to search for photos
       const response  = await this.unsplash.search.getPhotos({
@@ -44,26 +43,22 @@ export class Unsplash {
       // Check the value of the "type" parameter and execute the corresponding code block
       switch (type) {
         case 'buffer':
-          // Convert the photo buffer to Uint8Array
-          const data = new Uint8Array(photoBuffer);
-          console.log(`${query}.jpg buffer ready`);
-          // Return an object containing the photo's buffer and attributes
-          return {
-            attributes: {
-              caption: caption,
-              title: query.toLowerCase(),
-              alt_text: `an image of ${query.toLowerCase()}`,
-            },
-            buffer: data
-          };
+          // Existing code...
+          break;
         case 'file':
           // Convert the photo buffer to a Buffer
           const image = Buffer.from(photoBuffer);
-           // Create a file path for the photo
-          const filePath = `../assets/images/${query}.jpg`
-          // Write the photo to the file system
+          // Create a new directory for the photo based on its imageNumber
+          const dirPath = `../assets/images/${imageNumber}_image`;
+          // If the directory doesn't exist, create it
+          if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath);
+          }
+          // Create a file path for the photo in the new directory
+          const filePath = `${dirPath}/${imageNumber}.jpg`
+          // Write the photo to the file system in the new directory
           await fs.promises.writeFile(filePath, image);
-          console.log(`${query}.jpg saved`);
+          console.log(`Image ${imageNumber}.jpg saved`);
           break;
         default:
           console.log(`Invalid type: ${type}`);
@@ -74,5 +69,4 @@ export class Unsplash {
       return null;
     }
   }
-
 }

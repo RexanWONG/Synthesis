@@ -19,7 +19,8 @@ async function main() {
 
     for (let i = 0 ; i < keywords.length ; i++) {
         const unsplash = new Unsplash(process.env.UNSPLASH_ACCESS_KEY);
-        await unsplash.getPhoto('file', keywords[i]);
+        // Pass the image number to the getPhoto method
+        await unsplash.getPhoto('file', keywords[i], i+1);
     }
 }
 

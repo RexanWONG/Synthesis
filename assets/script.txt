@@ -1,15 +1,17 @@
- 
 
-Hey everyone! 
 
-Today, I'm here to talk about sustainable farming. Sustainable farming is a method of agriculture that focuses on producing food in a way that is better for the environment, the farmers, and the consumers. 
+Hi everyone! 
 
-As a sustainable farmer, you can use techniques such as crop rotation, cover crops, and no-till practices. Crop rotation is when you switch up the types of crops you grow in a specific area over time. This helps to keep the soil healthy and prevent pests and diseases. Cover crops are plants that are grown between regular crops to help improve the soil and reduce erosion. No-till practices are when you avoid tilling, or turning the soil, so that soil structure and organic matter are preserved. 
+Today I’m here to talk about sustainable water desalination techniques. We all know the importance of clean water, and with population growth and climate change, access to clean water is becoming increasingly difficult. 
 
-Sustainable farming also means using fewer chemicals. This means that you don't have to use chemical fertilizers or pesticides. You can use natural fertilizers and pest control methods like companion planting, using beneficial insects, and crop rotation.
+Fortunately, desalination techniques are becoming more and more efficient and cost-effective, allowing us to turn salt water into drinkable water. 
 
-Finally, sustainable farming means being mindful of water usage. You can use water-saving irrigation systems and capture rainwater for use in your crops. 
+There are a few different methods of desalination. The most common is reverse osmosis, which uses pressure to push the salt water through a semi-permeable membrane, leaving the salt behind. This method is efficient and cost-effective, but can be energy-intensive. 
 
-Sustainable farming is a great way to produce food while protecting the environment and our health. Try it out and start your own sustainable farm today! 
+Another method of desalination is called thermal desalination. This method uses energy from the sun to evaporate salt water, and then condense the vapor back into fresh water. This method is more energy-efficient than reverse osmosis, but it can be more expensive.
+
+Finally, there is a method called electrodialysis, which uses electricity to separate salt from the water. This method is both energy-efficient and cost-effective, but it can be complicated to implement. 
+
+No matter which method you choose, sustainable water desalination techniques are vital for providing clean water to areas that are facing water shortages. With the right implementation, it can be a cost-effective and efficient way to provide clean water. 
 
 Thanks for watching!

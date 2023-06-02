@@ -4,7 +4,7 @@ import fs from 'fs';
 const main = async () => {
   // Read the contents of the text file
   const script = fs.readFileSync('../assets/script.txt', 'utf-8');
-  
+
   // Check if script is not empty
   if (!script || script.trim() === '') {
     console.error('Error: Script is empty');
