@@ -11,19 +11,26 @@ const main = async () => {
     return;
   }
 
-  console.log('Script read successfully:', script);
+  console.log('Script read successfully');
 
-  // Call the textToSpeech function to generate the audio data for the script read from the file
-  const data = await textToSpeech(script);
+  // Split the script into sentences
+  const sentences = script.split(/[.?!]+/).map(sentence => sentence.trim()).filter(Boolean);
 
-  // Write the data to a .mp3 file
-  fs.writeFile('../assets/narration.mp3', Buffer.from(data), (err) => {
-    if (err) {
-      console.error('Error writing file:', err);
-    } else {
-      console.log('File written successfully');
-    }
-  });
+  for (let i = 0; i < sentences.length; i++) {
+    console.log(`Processing sentence ${i+1}: ${sentences[i]}`);
+
+    // Call the textToSpeech function to generate the audio data for each sentence
+    const data = await textToSpeech(sentences[i]);
+
+    // Write the data to a .mp3 file named as {sentenceNum}_narration.mp3
+    fs.writeFile(`../assets/${i+1}_narration.mp3`, Buffer.from(data), (err) => {
+      if (err) {
+        console.error(`Error writing file for sentence ${i+1}:`, err);
+      } else {
+        console.log(`File written successfully for sentence ${i+1}`);
+      }
+    });
+  }
 };
 
-main()
+main();
