@@ -22,6 +22,7 @@ async function generateScript(prompt) {
 
 generateScript(
     `You are my Youtube assistant. 
-    Please write a script for a Youtube video about a random topic of your choice related to ${getRandomTopic()}.  
+    Please write a script for a Youtube video about ${getRandomTopic()}. 
+    Make the script entertaining, informative, and funny. 
     The video will be around 2-3 minutes.`
 )
