@@ -16,7 +16,7 @@ export async function findKeywords(script) {
       const importantKeyword = await createCompletion(`
         I will give you a sentence. Choose a keyword to represent that sentence.
         The keyword will be used to search for a picture on Unsplash.
-        Just write the name of the keyword.
+        Just write the name of the keyword.  Make it so that the keyword should be a term that can return results from unsplash.
         Here is the sentence:
         ${sentences[i]}`);
 
