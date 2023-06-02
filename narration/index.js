@@ -23,7 +23,7 @@ const main = async () => {
     const data = await textToSpeech(sentences[i]);
 
     // Write the data to a .mp3 file named as {sentenceNum}_narration.mp3
-    fs.writeFile(`../assets/${i+1}_narration.mp3`, Buffer.from(data), (err) => {
+    fs.writeFile(`../assets/narrations/${i+1}_narration.mp3`, Buffer.from(data), (err) => {
       if (err) {
         console.error(`Error writing file for sentence ${i+1}:`, err);
       } else {
