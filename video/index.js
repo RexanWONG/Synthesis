@@ -11,7 +11,7 @@ async function main() {
     const audioPath = `../assets/narrations/${i}_narration.mp3`;
     const duration = await getAudioDurationInSeconds(audioPath);
 
-    const promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {   
       ffmpeg()
         .input(`../assets/images/${i}_image/${i}.jpg`)
         .loop(duration)
@@ -75,6 +75,8 @@ async function checkAndConcatVideos(numSentences) {
       ffmpeg()
         .input('temp.txt')
         .inputOptions(['-f', 'concat', '-safe', '0'])
+        .audioCodec('copy')
+        .audioBitrate('192k')
         .outputOptions(['-c', 'copy'])
         .on('end', function() {
           console.log('All videos combined into one!');
