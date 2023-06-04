@@ -28,7 +28,7 @@ async function readScript() {
     const data = await new Promise((resolve, reject) => {
         readFile('../assets/script.txt', 'utf8', (err, data) => {
           if (err) reject(err);
-          resolve(data);
+          resolve(data)
         });
     });
 
