@@ -102,7 +102,7 @@ function getAudioDurationInSeconds(audioPath) {
   return new Promise((resolve, reject) => {
     ffmpeg.ffprobe(audioPath, (err, metadata) => {
       if (err) { reject(err); return; }
-      resolve(metadata.format.duration);
+      resolve(metadata.format.duration)
     });
   });
 }
