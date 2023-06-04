@@ -12,8 +12,8 @@ async function generateScript(prompt) {
         const script = await createCompletion(prompt)
         console.log(script)
     
-        await writeFile(`../assets/script.txt`, script.choices[0].text);
-        console.log(`Saved script to script.txt`);
+        await writeFile(`../assets/script.txt`, script.choices[0].text)
+        console.log(`Saved script to script.txt`)
 
     } catch (error) {
         console.log(error)
