@@ -7,8 +7,8 @@ const main = async () => {
 
   // Check if script is not empty
   if (!script || script.trim() === '') {
-    console.error('Error: Script is empty');
-    return;
+    console.error('Error: Script is empty')
+    return
   }
 
   console.log('Script read successfully');
